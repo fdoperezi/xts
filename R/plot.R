@@ -127,6 +127,7 @@ chart.lines <- function(x,
   }
   if(!is.null(legend.loc)){
     lc <- legend.coords(legend.loc, xx$Env$xlim, range(x, na.rm=TRUE))
+    print(lc)
     legend(x=lc$x, y=lc$y, legend=colnames(x), xjust=lc$xjust, yjust=lc$yjust,
            fill=col[1:NCOL(x)], bty="n")
   }
@@ -1004,7 +1005,7 @@ addLegend <- function(legend.loc="center", legend.names=NULL, col=NULL, ncol=1, 
       ncol <- NCOL(x$Env$xdata)
     }
     if(is.null(col)){
-      col <- x$Env$theme$col[1:nc]
+      col <- x$Env$theme$col[1:NCOL(x$Env$xdata)]
     }
     if(is.null(legend.names)){
       legend.names <- x$Env$column_names
